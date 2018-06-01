@@ -1,18 +1,18 @@
 <?php
 
 // Heading
-$_['heading_title']                                         = 'alpha Payment Gateway Services';
+$_['heading_title']                                         = 'Alpha Payment Gateway Services';
 $_['heading_title_transaction']                             = 'View Transaction #%s';
 
 // Help
 $_['help_total']                                            = 'The checkout total the order must reach before this payment method becomes active.';
-$_['help_tokenize']                                         = 'Enabling this will store a token for your customers&apos; credit card details after they successfully complete their payment. This will allow them to complete their next purchases without getting redirected to the Mastercard Hosted Checkout page.<br /><br />NOTE: Tokens will be saved only for registered customers.';
-$_['help_display_name']                                     = 'This text is the name of the payment method your customers will see during checkout. Default: Mastercard Payment Gateway Services';
+$_['help_tokenize']                                         = 'Enabling this will store a token for your customers&apos; credit card details after they successfully complete their payment. This will allow them to complete their next purchases without getting redirected to the Alpha Hosted Checkout page.<br /><br />NOTE: Tokens will be saved only for registered customers.';
+$_['help_display_name']                                     = 'This text is the name of the payment method your customers will see during checkout. Default: Alpha Payment Gateway Services';
 $_['help_checkout']                                         = 'This is the type of transactions which will be done when your customers checkout with an already saved credit card token.';
 $_['help_merchant']                                         = 'If you want to enable test mode, prepend <strong>TEST</strong> in front of the merchant name. Example: <strong>TESTMERCHANTID</strong>';
 $_['help_google_analytics_property_id']                     = 'The property ID for your shop site provided by Google Analytics in the form UA-XXXXX-Y. Provide this ID if you want to track interactions with the checkout using Google Analytics. See www.google.com/analytics.';
-$_['help_notification_secret']                              = 'Get your notification secret from <strong>Mastercard Merchant Administration &gt; Admin &gt; Webhook Notifications</strong>.<br /><br />IMPORTANT: Make sure that Webhook Notifications are <strong>Enabled</strong>.<br /><br />IMPORTANT: Make sure to select <strong>JSON/REST</strong> as the Web Services API Format.<br /><br />NOTE: Notification URL can be left empty.';
-$_['help_integration_password']                             = 'Get your integration password from <strong>Mastercard Merchant Administration &gt; Admin &gt; Integration Settings</strong>.';
+$_['help_notification_secret']                              = 'Get your notification secret from <strong>Alpha Merchant Administration &gt; Admin &gt; Webhook Notifications</strong>.<br /><br />IMPORTANT: Make sure that Webhook Notifications are <strong>Enabled</strong>.<br /><br />IMPORTANT: Make sure to select <strong>JSON/REST</strong> as the Web Services API Format.<br /><br />NOTE: Notification URL can be left empty.';
+$_['help_integration_password']                             = 'Get your integration password from <strong>Alpha Merchant Administration &gt; Admin &gt; Integration Settings</strong>.';
 $_['help_debug_log']                                        = 'Use this only for debugging purposes. Enabling this will log the following to your OpenCart error log: notification data, REST API requests, REST API responses';
 $_['help_approved_authorization_order_status']              = 'Transaction of type AUTHORIZATION or AUTHORIZATION_UPDATE is approved.';
 $_['help_approved_capture_order_status']                    = 'Transaction of type CAPTURE is approved.';
@@ -59,10 +59,10 @@ $_['tab_setting']                                           = 'Settings';
 $_['tab_transaction']                                       = 'Transactions';
 
 // Text
-$_['text_edit']                                             = 'Edit Mastercard Payment Gateway Services';
+$_['text_edit']                                             = 'Edit Alpha Payment Gateway Services';
 $_['text_extension']                                        = 'Extensions';
-//$_['text_alphacard_pgs']                                   = '<a target="_BLANK" href="http://www.alphacard.com/index.html"><img src="view/image/payment/alphacard_pgs.png" alt="Mastercard Payment Gateway Services" title="Mastercard Payment Gateway Services" style="border: 1px solid #EEEEEE;" /></a>';
-$_['text_success']                                          = 'Success: You have modified Mastercard Payment Gateway Services payment module!';
+//$_['text_alphacard_pgs']                                   = '<a target="_BLANK" href="http://www.alphacard.com/index.html"><img src="view/image/payment/alphacard_pgs.png" alt="Alpha Payment Gateway Services" title="Alpha Payment Gateway Services" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_success']                                          = 'Success: You have modified Alpha Payment Gateway Services payment module!';
 $_['text_gateway_na']                                       = 'NA - North America / South America';
 $_['text_gateway_eu']                                       = 'EU - Europe / UK / MEA';
 $_['text_gateway_ap']                                       = 'AP - Asia / Pacific';
@@ -90,7 +90,7 @@ $_['text_general_settings']                                 = 'General Settings'
 $_['text_transaction_statuses']                             = 'Transaction Statuses';
 $_['text_copy_clipboard']                                   = 'Copy to Clipboard';
 $_['text_show_hide']                                        = 'Show/Hide';
-$_['text_log_api_intro']                                    = '[Mastercard Payment Gateway Services - REST API %s]: ';
+$_['text_log_api_intro']                                    = '[Alpha Payment Gateway Services - REST API %s]: ';
 $_['text_no_transactions']                                  = 'No transactions have been logged yet.';
 
 // Entry
@@ -166,8 +166,10 @@ $_['entry_risk_review_pending_order_status']                = 'Risk Review: Pend
 $_['entry_risk_review_rejected_order_status']               = 'Risk Review: Rejected';
 
 // Error
-$_['error_permission']                                      = 'Warning: You do not have permission to modify payment Mastercard Payment Gateway Services!';
-$_['error_merchant']                                        = 'You must specify a Merchant ID between 1 and 16 characters.';
+$_['error_permission']                                      = 'Warning: You do not have permission to modify payment Alpha Payment Gateway Services!';
+$_['error_url']                                        = 'Hosted Payment Page URL required!';
+$_['error_userid']                                        = 'User ID required!';
+$_['error_merchant']                                        = 'Merchant ID required!';
 $_['error_notification_secret']                             = 'You must specify your notification secret, which is 32 characters long.';
 $_['error_integration_password']                            = 'You must specify your integration password, which is 32 characters long.';
 $_['error_not_authorization']                               = 'Invalid transaction type. Expecting: AUTHORIZATION, AUTHORIZATION_UPDATE.';
