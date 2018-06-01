@@ -1,83 +1,3 @@
-{# {% if error_session %}
-    <div class="alert alert-danger warning"><i class="fa fa-exclamation-circle"></i>&nbsp;{{ error_session }}</div>
-{% else %}
-    <div class="alert alert-danger warning" id="alphacard_pgs_error" style="display:none;"></div>
-    {% if warning_test_mode %}
-        <div class="alert alert-warning attention"><i class="fa fa-exclamation-circle"></i>&nbsp;{{ warning_test_mode }}</div>
-    {% endif %}
-    {% if cards %}
-    <div class="row">
-        <div class="col-xs-12">
-            <p>{{ text_select_card }}</p>
-            <select class="form-control" name="alphacard_pgs_token">
-                <option value="">{{ text_new_card }}</option>
-                <optgroup label="{{ text_existing_card }}">
-                    {% for card in cards %}
-                        <option value="{{ card.token }}">{{ card.text }}</option>
-                    {% endfor %}
-                </optgroup>
-            </select>
-        </div>
-    </div>
-    {% endif %}
-    <div class="buttons">
-      <div class="pull-right">
-        <input type="button" value="{{ button_confirm }}" id="button-confirm" class="btn btn-primary" data-loading-text="{{ text_loading }}" />
-      </div>
-    </div>
-    <script type="text/javascript">
-        $('#alphacard_pgs_error').hide().html('');
-
-        $('#button-confirm').on('click', function() {
-            $(this).button('loading');
-
-            if ($('select[name="alphacard_pgs_token"]').length && $('select[name="alphacard_pgs_token"]').val() !== '') {
-                $.ajax({
-                    url: 'index.php?route=extension/payment/alphacard_pgs/checkout',
-                    data: {
-                        token: $('select[name="alphacard_pgs_token"]').val()
-                    },
-                    dataType: 'json',
-                    type: 'POST',
-                    beforeSend: function() {
-                        $('#alphacard_pgs_error').hide().html('');
-                    },
-                    success: function(json) {
-                        if (json.error) {
-                            $('#alphacard_pgs_error').html('<i class="fa fa-exclamation-circle"></i>&nbsp;' + json.error).show();
-                        } else if (json.redirect) {
-                            location = json.redirect;
-                        }
-                    },
-                    error: function(xhr, ajaxOptions, thrownError) {
-                        $('#button-confirm').button('reset');
-                        alert(thrownError + " (" + xhr.statusText + "): " + xhr.responseText);
-                    },
-                    complete: function() {
-                        $('#button-confirm').button('reset');
-                    }
-                });
-            } else {
-                if (typeof Checkout == 'undefined') {
-                    $('#button-confirm').button('reset');
-                    alert("{{ error_event_missing }}");
-                } else {
-                    Checkout.configure({{ configuration_json }});
-
-                    {% if onclick == 'lightbox' %}
-                        Checkout.showLightbox();
-                    {% else %}
-                        Checkout.showPaymentPage();
-                    {% endif %}
-                }
-            }
-        });
-    </script>
-{% endif %}
- #}
- {% if testmode %}
-<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ text_testmode }}</div>
-{% endif %}
 <form action="{{ action }}" method="post">
   <input type="hidden" name="MerchantID" value="{{ merchant }}" />
   <input type="hidden" name="3DSecureBypass" value="{{ secure }}" />
@@ -86,14 +6,8 @@
   <input type="hidden" name="Currency" value="AUD">
   <input type="hidden" name="MerchantTxnID" value="{{ merchanttxnid }}">
   <input type="hidden" name="UserId" value="{{ user }}" />
-  
   <input type="hidden" name="SuccessURL" value="{{ notify_url }}" />
   <input type="hidden" name="CancelURL" value="{{ cancel_return }}">
-  <input type="hidden" name="OrderDetails[0].ItemName" value="{{ pro_name }}" />
-  <input type="hidden" name="OrderDetails[0].ItemDescription" value="{{ pro_name }}" />
-  <input type="hidden" name="OrderDetails[0].ItemAmount" value="{{ amount }}" />
-  <input type="hidden" name="OrderDetails[0].ItemQuantity" value="{{ pro_quantity }}" />
-  
   <div class="buttons">
     <div class="pull-right">
       <input type="submit" value="{{ button_confirm }}" class="btn btn-primary" />
