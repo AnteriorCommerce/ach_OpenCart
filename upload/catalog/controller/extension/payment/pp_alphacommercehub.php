@@ -22,7 +22,7 @@ $data['user'] = $this->config->get('payment_pp_alphacommercehub_user');
 		$this->load->model('checkout/order');
 		$order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
 $amount = $order_info['total'] * 1000;
-$data['amount'] = round($amount);
+$data['amount'] = $amount;
 		if ($order_info) {
 			$data['business'] = $this->config->get('payment_pp_alphacommercehub_email');
 			$data['item_name'] = html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8');
