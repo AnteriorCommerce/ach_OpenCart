@@ -20,6 +20,21 @@ class ControllerExtensionPaymentPPAlphacommercehub extends Controller {
 		} else {
 			$data['error_email'] = '';
 		}
+		if (isset($this->error['merchant'])) {
+			$data['error_merchant'] = $this->error['merchant'];
+		} else {
+			$data['error_merchant'] = '';
+		}
+		if (isset($this->error['url'])) {
+			$data['error_url'] = $this->error['url'];
+		} else {
+			$data['error_url'] = '';
+		}
+		if (isset($this->error['userid'])) {
+			$data['error_userid'] = $this->error['userid'];
+		} else {
+			$data['error_userid'] = '';
+		}
 		$data['breadcrumbs'] = array();
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
@@ -161,6 +176,15 @@ if (isset($this->request->post['payment_pp_alphacommercehub_merchant'])) {
 		}
 		if (!$this->request->post['payment_pp_alphacommercehub_email']) {
 			$this->error['email'] = $this->language->get('error_email');
+		}
+		if (!$this->request->post['payment_pp_alphacommercehub_merchant']) {
+			$this->error['merchant'] = $this->language->get('error_merchant');
+		}
+		if (!$this->request->post['payment_pp_alphacommercehub_url']) {
+			$this->error['url'] = $this->language->get('error_url');
+		}
+		if (!$this->request->post['payment_pp_alphacommercehub_user']) {
+			$this->error['userid'] = $this->language->get('error_userid');
 		}
 		return !$this->error;
 	}
