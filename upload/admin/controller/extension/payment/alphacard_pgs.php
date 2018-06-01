@@ -419,6 +419,16 @@ class ControllerExtensionPaymentAlphacardPGS extends Controller {
         } else {
             $data['error_merchant'] = '';
         }
+        if (isset($this->error['url'])) {
+            $data['error_url'] = $this->error['url'];
+        } else {
+            $data['error_url'] = '';
+        }
+        if (isset($this->error['userid'])) {
+            $data['error_userid'] = $this->error['userid'];
+        } else {
+            $data['error_userid'] = '';
+        }
 
         if (isset($this->request->post['payment_alphacard_pgs_notification_secret'])) {
             $data['payment_alphacard_pgs_notification_secret'] = $this->request->post['payment_alphacard_pgs_notification_secret'];
@@ -869,27 +879,16 @@ class ControllerExtensionPaymentAlphacardPGS extends Controller {
         if (!$this->user->hasPermission('modify', 'extension/payment/alphacard_pgs')) {
             $this->error['warning'] = $this->language->get('error_permission');
         }
-
-       /* if (empty($this->request->post['payment_alphacard_pgs_merchant']) || strlen($this->request->post['payment_alphacard_pgs_merchant']) > 16) {
-            $this->error['merchant'] = $this->language->get('error_merchant');
-        }
-*/
-        if (empty($this->request->post['payment_alphacard_pgs_notification_secret']) || strlen($this->request->post['payment_alphacard_pgs_notification_secret']) != 32) {
-            //$this->error['notification_secret'] = $this->language->get('error_notification_secret');
-        }
-
-        if (empty($this->request->post['payment_alphacard_pgs_integration_password']) || strlen($this->request->post['payment_alphacard_pgs_integration_password']) != 32) {
-		//$this->error['integration_password'] = $this->language->get('error_integration_password');
-        }
-
-        if ($this->request->post['payment_alphacard_pgs_gateway'] == 'other' && empty($this->request->post['payment_alphacard_pgs_gateway_other'])) {
-            $this->error['gateway_other'] = $this->language->get('error_gateway_other');
-        }
-
-        if ($this->error && !isset($this->error['warning'])) {
-            $this->error['warning'] = $this->language->get('error_warning');
-        }
-
+if (!$this->request->post['payment_alphacard_pgs_merchant']) {
+			$this->error['merchant'] = $this->language->get('error_merchant');
+		}
+if (!$this->request->post['payment_alphacard_pgs_url']) {
+			$this->error['url'] = $this->language->get('error_url');
+		}
+if (!$this->request->post['payment_alphacard_pgs_user']) {
+			$this->error['userid'] = $this->language->get('error_userid');
+		}
+      
         return !$this->error;
     }
 }
